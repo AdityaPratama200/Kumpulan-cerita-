@@ -1,2 +1,0 @@
-# Kumpulan-cerita-
-Cerita random 
