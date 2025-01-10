@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rintangan Sebelum Download</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            margin-top: 50px;
+            padding: 20px;
+            max-width: 400px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-left: auto;
+            margin-right: auto;
+        }
+        h1 {
+            color: #333;
+        }
+        .question {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .answer-input {
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .submit-btn {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .submit-btn:hover {
+            background-color: #388e3c;
+        }
+        .download-btn {
+            display: none;
+            padding: 10px 20px;
+            background-color: #2196f3;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .download-btn:hover {
+            background-color: #1e88e5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Download MediaFire</h1>
+        <p class="question">Saya adalah angka yang lebih besar dari 40 tetapi lebih kecil dari 50. Jika saya dibagi 2, hasilnya adalah bilangan prima. Siapakah saya?</p>
+        <input type="text" id="answer" class="answer-input" placeholder="Masukkan jawaban Anda">
+        <button onclick="checkAnswer()" class="submit-btn">Submit</button>
+        <br><br>
+        <a id="download-btn" class="download-btn" href="https://www.mediafire.com/file/example-file" target="_blank">Download</a>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            const answer = document.getElementById("answer").value;
+            const correctAnswer = "47"; // Jawaban yang benar
+            const downloadBtn = document.getElementById("download-btn");
+
+            if (answer === correctAnswer) {
+                alert("Jawaban benar! Tombol download sekarang tersedia.");
+                downloadBtn.style.display = "inline-block";
+            } else {
+                alert("Jawaban salah! Coba lagi.");
+            }
+        }
+    </script>
+</body>
+</html>
