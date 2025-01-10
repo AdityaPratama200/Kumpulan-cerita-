@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tebak Angka</title>
+    <style>
+        /* Gaya umum */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom right, #4e54c8, #8f94fb);
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            font-size: 1em;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            text-align: center;
+        }
+
+        input[type="number"]::placeholder {
+            color: #ccc;
+        }
+
+        button {
+            background-color: #6c63ff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 15px;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #5548c8;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .result.success {
+            color: #00ff00;
+        }
+
+        .result.error {
+            color: #ff4444;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Game Tebak Angka</h1>
+        <p>Tebak angka antara 1 hingga 100. Bisakah Anda menemukannya?</p>
+        <input type="number" id="guess" placeholder="Masukkan tebakan Anda">
+        <button onclick="checkGuess()">Tebak</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        // Angka acak antara 1 hingga 100
+        const randomNumber = Math.floor(Math.random() * 100) + 1;
+        let attempts = 0;
+
+        function checkGuess() {
+            const guessInput = document.getElementById("guess");
+            const resultDiv = document.getElementById("result");
+            const guess = Number(guessInput.value);
+            attempts++;
+
+            if (!guess || guess < 1 || guess > 100) {
+                resultDiv.textContent = "Masukkan angka antara 1 hingga 100!";
+                resultDiv.className = "result error";
+            } else if (guess === randomNumber) {
+                resultDiv.textContent = `Selamat! Anda menebak dengan benar dalam ${attempts} percobaan.`;
+                resultDiv.className = "result success";
+                guessInput.disabled = true;
+            } else if (guess < randomNumber) {
+                resultDiv.textContent = "Terlalu rendah. Coba lagi!";
+                resultDiv.className = "result error";
+            } else {
+                resultDiv.textContent = "Terlalu tinggi. Coba lagi!";
+                resultDiv.className = "result error";
+            }
+            guessInput.value = "";
+        }
+    </script>
+</body>
+</html>
